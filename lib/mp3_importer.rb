@@ -22,6 +22,4 @@ end
       Song.new_by_filename(file)
     end
   end
-
-
 end
