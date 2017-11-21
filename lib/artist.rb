@@ -1,3 +1,4 @@
+require 'pry'
 class Artist
 
   attr_accessor :name, :songs
@@ -21,6 +22,13 @@ class Artist
       artist
     end
   end
+
+  def self.create(name)
+   self.new(name).tap do |artist|
+     binding.pry
+      artist.save
+    end
+ end
 
   def print_songs
     self.songs.each {|song| puts song.name}
