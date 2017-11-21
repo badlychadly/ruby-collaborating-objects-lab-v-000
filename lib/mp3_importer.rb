@@ -1,3 +1,4 @@
+require 'pry'
 class MP3Importer
   attr_accessor :path
 
@@ -5,11 +6,18 @@ class MP3Importer
     @path = path
   end
 
+  # def files
+  #   Dir.entries(path).select do |file|
+  #      file.include?('mp3')
+  #    end
+  # end
+
   def files
-    Dir.entries(path).select do |file|
-       file.include?('mp3')
-     end
-  end
+  @files ||= Dir.glob("#{path}/*.mp3").collect do |f|
+     f.gsub("#{path}/", "")
+   end
+end
+
 
   def import
     files.each do |file|
